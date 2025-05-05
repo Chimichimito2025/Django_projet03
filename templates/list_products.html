@@ -1,0 +1,8 @@
+
+
+{% for product in products %}
+
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" width="400" height="300">
+    <a href="">{{ product.name }}</a>
+
+{% endfor %}
