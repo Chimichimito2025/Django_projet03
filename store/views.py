@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from store.models import Product
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
 
 class ProductListView(ListView):
@@ -18,3 +18,13 @@ class ProductCreateView(CreateView):
     template_name="product_create.html"
     fields="__all__"
     success_url=reverse_lazy("product_list")
+
+
+class ProductUpdateView(UpdateView):
+    model=Product
+    template_name="product_update.html"
+    success_url=reverse_lazy("detail")
+    fields=['name','description','price']
+
+    def get_success_url(self):
+        return reverse_lazy("detail", kwargs={"pk": self.object.pk})
