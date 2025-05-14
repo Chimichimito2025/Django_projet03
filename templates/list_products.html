@@ -1,9 +1,14 @@
 
-<a href="{% url 'create' %}">Añadir Producto</a>
+{% extends 'includes/nav.html' %}
 
-{% for product in products %}
+{% block content %}
 
-    <img src="{{ product.image.url }}" alt="{{ product.name }}" width="400" height="300">
-    <a href="{% url 'detail' product.pk %}">{{ product.name }}</a>
 
-{% endfor %}
+    {% for product in products %}
+
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" width="400" height="300">
+        <a href="{% url 'detail' product.pk %}">{{ product.name }}</a>
+
+    {% endfor %}
+
+{% endblock %}
